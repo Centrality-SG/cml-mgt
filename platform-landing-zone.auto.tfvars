@@ -59,9 +59,9 @@ custom_replacements = {
     primary_firewall_management_ip_enabled                               = false
     primary_virtual_network_gateway_express_route_enabled                = false
     primary_virtual_network_gateway_express_route_hobo_public_ip_enabled = false
-    primary_virtual_network_gateway_vpn_enabled                          = true
+    primary_virtual_network_gateway_vpn_enabled                          = false
     primary_private_dns_zones_enabled                                    = true
-    primary_private_dns_auto_registration_zone_enabled                   = true
+    primary_private_dns_auto_registration_zone_enabled                   = false
     primary_private_dns_resolver_enabled                                 = true
     primary_bastion_enabled                                              = false
 
@@ -70,9 +70,9 @@ custom_replacements = {
     secondary_firewall_management_ip_enabled                               = false
     secondary_virtual_network_gateway_express_route_enabled                = false
     secondary_virtual_network_gateway_express_route_hobo_public_ip_enabled = false
-    secondary_virtual_network_gateway_vpn_enabled                          = true
+    secondary_virtual_network_gateway_vpn_enabled                          = false
     secondary_private_dns_zones_enabled                                    = true
-    secondary_private_dns_auto_registration_zone_enabled                   = true
+    secondary_private_dns_auto_registration_zone_enabled                   = false
     secondary_private_dns_resolver_enabled                                 = true
     secondary_bastion_enabled                                              = false
 
@@ -532,5 +532,6 @@ telemetry_additional_content = {
   deployed_by    = "alz-terraform-accelerator"
   correlation_id = "00000000-0000-0000-0000-000000000000"
 }
+
 
 
