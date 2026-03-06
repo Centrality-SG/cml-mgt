@@ -52,7 +52,7 @@ custom_replacements = {
     dcr_vm_insights_name                    = "dcr-vm-insights"
 
     # Resource provisioning global connectivity
-    ddos_protection_plan_enabled = true
+    ddos_protection_plan_enabled = false
 
     # Resource provisioning primary connectivity
     primary_firewall_enabled                                             = false
@@ -119,7 +119,7 @@ custom_replacements = {
     # IP Ranges Primary
     # Regional Address Space: 10.0.0.0/16
     primary_hub_address_space                          = "10.100.0.0/16"
-    primary_hub_virtual_network_address_space          = "10.100.0.0/22"
+    primary_hub_virtual_network_address_space          = "10.100.0.0/16"
     primary_firewall_subnet_address_prefix             = "10.100.250.0/26"
     primary_firewall_management_subnet_address_prefix  = "10.100.250.192/26"
     primary_bastion_subnet_address_prefix              = "10.100.251.0/24"
@@ -129,7 +129,7 @@ custom_replacements = {
     # IP Ranges Secondary
     # Regional Address Space: 10.1.0.0/16
     secondary_hub_address_space                          = "10.200.0.0/16"
-    secondary_hub_virtual_network_address_space          = "10.200.0.0/22"
+    secondary_hub_virtual_network_address_space          = "10.200.0.0/16"
     secondary_firewall_subnet_address_prefix             = "10.200.250.0/26"
     secondary_firewall_management_subnet_address_prefix  = "10.200.250.192/26"
     secondary_bastion_subnet_address_prefix              = "10.200.251.0/24"
@@ -532,4 +532,5 @@ telemetry_additional_content = {
   deployed_by    = "alz-terraform-accelerator"
   correlation_id = "00000000-0000-0000-0000-000000000000"
 }
+
 
