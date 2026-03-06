@@ -55,26 +55,26 @@ custom_replacements = {
     ddos_protection_plan_enabled = true
 
     # Resource provisioning primary connectivity
-    primary_firewall_enabled                                             = true
-    primary_firewall_management_ip_enabled                               = true
-    primary_virtual_network_gateway_express_route_enabled                = true
-    primary_virtual_network_gateway_express_route_hobo_public_ip_enabled = true
+    primary_firewall_enabled                                             = false
+    primary_firewall_management_ip_enabled                               = false
+    primary_virtual_network_gateway_express_route_enabled                = false
+    primary_virtual_network_gateway_express_route_hobo_public_ip_enabled = false
     primary_virtual_network_gateway_vpn_enabled                          = true
     primary_private_dns_zones_enabled                                    = true
     primary_private_dns_auto_registration_zone_enabled                   = true
     primary_private_dns_resolver_enabled                                 = true
-    primary_bastion_enabled                                              = true
+    primary_bastion_enabled                                              = false
 
     # Resource provisioning secondary connectivity
-    secondary_firewall_enabled                                             = true
-    secondary_firewall_management_ip_enabled                               = true
-    secondary_virtual_network_gateway_express_route_enabled                = true
-    secondary_virtual_network_gateway_express_route_hobo_public_ip_enabled = true
+    secondary_firewall_enabled                                             = false
+    secondary_firewall_management_ip_enabled                               = false
+    secondary_virtual_network_gateway_express_route_enabled                = false
+    secondary_virtual_network_gateway_express_route_hobo_public_ip_enabled = false
     secondary_virtual_network_gateway_vpn_enabled                          = true
     secondary_private_dns_zones_enabled                                    = true
     secondary_private_dns_auto_registration_zone_enabled                   = true
     secondary_private_dns_resolver_enabled                                 = true
-    secondary_bastion_enabled                                              = true
+    secondary_bastion_enabled                                              = false
 
     # Resource names primary connectivity
     primary_virtual_network_name                                 = "vnet-hub-$${starter_location_01}"
@@ -118,23 +118,23 @@ custom_replacements = {
 
     # IP Ranges Primary
     # Regional Address Space: 10.0.0.0/16
-    primary_hub_address_space                          = "10.0.0.0/16"
-    primary_hub_virtual_network_address_space          = "10.0.0.0/22"
-    primary_firewall_subnet_address_prefix             = "10.0.0.0/26"
-    primary_firewall_management_subnet_address_prefix  = "10.0.0.192/26"
-    primary_bastion_subnet_address_prefix              = "10.0.0.64/26"
-    primary_gateway_subnet_address_prefix              = "10.0.0.128/27"
-    primary_private_dns_resolver_subnet_address_prefix = "10.0.0.160/28"
+    primary_hub_address_space                          = "10.100.0.0/16"
+    primary_hub_virtual_network_address_space          = "10.100.0.0/22"
+    primary_firewall_subnet_address_prefix             = "10.100.250.0/26"
+    primary_firewall_management_subnet_address_prefix  = "10.100.250.192/26"
+    primary_bastion_subnet_address_prefix              = "10.100.251.0/24"
+    primary_gateway_subnet_address_prefix              = "10.100.252.0/26"
+    primary_private_dns_resolver_subnet_address_prefix = "10.100.252.192/26"
 
     # IP Ranges Secondary
     # Regional Address Space: 10.1.0.0/16
-    secondary_hub_address_space                          = "10.1.0.0/16"
-    secondary_hub_virtual_network_address_space          = "10.1.0.0/22"
-    secondary_firewall_subnet_address_prefix             = "10.1.0.0/26"
-    secondary_firewall_management_subnet_address_prefix  = "10.1.0.192/26"
-    secondary_bastion_subnet_address_prefix              = "10.1.0.64/26"
-    secondary_gateway_subnet_address_prefix              = "10.1.0.128/27"
-    secondary_private_dns_resolver_subnet_address_prefix = "10.1.0.160/28"
+    secondary_hub_address_space                          = "10.200.0.0/16"
+    secondary_hub_virtual_network_address_space          = "10.200.0.0/22"
+    secondary_firewall_subnet_address_prefix             = "10.200.250.0/26"
+    secondary_firewall_management_subnet_address_prefix  = "10.200.250.192/26"
+    secondary_bastion_subnet_address_prefix              = "10.200.251.0/24"
+    secondary_gateway_subnet_address_prefix              = "10.200.252.0/26"
+    secondary_private_dns_resolver_subnet_address_prefix = "10.200.252.192/26"
   }
 
   /*
@@ -172,8 +172,10 @@ custom_replacements = {
 This variable can be used to apply tags to all resources that support it. Some resources allow overriding these tags.
 */
 tags = {
-  deployed_by = "terraform"
+  deployed_by = "GJM"
   source      = "Azure Landing Zones Accelerator"
+  notes       = "Test CML Deployment"
+
 }
 
 /*
@@ -530,3 +532,4 @@ telemetry_additional_content = {
   deployed_by    = "alz-terraform-accelerator"
   correlation_id = "00000000-0000-0000-0000-000000000000"
 }
+
