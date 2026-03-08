@@ -1,45 +1,21 @@
-terraform {
-  required_version = ">= 1.9, < 2.0"
+resource "azurerm_resource_group" "rg" {
+  name     = var.resource_group_name
+  location = var.location
+}
 
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 4.0"
-    }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.5"
+module "identity_vnet" {
+  source  = "Azure/avm-res-network-virtualnetwork/azurerm"
+  version = "0.17.1"
+
+  name                = var.vnet_name
+  location            = var.location
+  resource_group_name = azurerm_resource_group.rg.name
+  address_space       = var.address_space
+
+  subnets = {
+    snet_dc = {
+      name             = "snet-dc"
+      address_prefixes = ["10.40.1.0/24"]
     }
   }
-}
-
-provider "azurerm" {
-  features {
-    resource_group {
-      prevent_deletion_if_contains_resources = false
-    }
-  }
-}
-
-# This ensures we have unique CAF compliant names for our resources.
-module "naming" {
-  source  = "Azure/naming/azurerm"
-  version = "0.4.2"
-}
-
-# This is required for resource modules
-resource "azurerm_resource_group" "this" {
-  location = local.selected_region
-  name     = module.naming.resource_group.name_unique
-}
-
-# Creating a virtual network with a unique name, telemetry settings, and in the specified resource group and location.
-module "vnet" {
-  source = "../../"
-
-  location         = azurerm_resource_group.this.location
-  parent_id        = azurerm_resource_group.this.id
-  address_space    = ["10.101.0.0/16"]
-  enable_telemetry = true
-  name             = module.naming.virtual_network.name
 }
